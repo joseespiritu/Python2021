@@ -1,30 +1,44 @@
 class Persona:
-    def __init__(self, nombre, apellido, edad, *valores, **terminos):
-        self.nombre = nombre
-        self.apellido = apellido
-        self.edad = edad
-        self.valores = valores
-        self.terminos = terminos
+    def __init__(self, nombre, apellido, edad):
+        self._nombre = nombre
+        self._apellido = apellido
+        self._edad = edad
+
+    @property
+    def nombre(self):
+        return self._nombre
+
+    @nombre.setter
+    def nombre(self, nombre):
+        self._nombre = nombre
+
+    @property
+    def apellido(self):
+        return self._apellido
+
+    @apellido.setter
+    def apellido(self, apellido):
+        self._apellido = apellido
+
+    @property
+    def edad(self):
+        return self._edad
+
+    @edad.setter
+    def edad(self, edad):
+        self._edad = edad
 
     def mostrar_detalle(self):
-        print(f'Persona: {self.nombre} {self.apellido} {self.edad} {self.valores} {self.terminos}')
+        print(f'Persona: {self._nombre} {self._apellido} {self._edad}')
 
-persona1 = Persona('Jose', 'Perez', 28, '3323232', 2,3,4, m='manzana', p='pera')
-persona1.mostrar_detalle() # lo más común
+    def __del__(self):
+        print(f'Persona: {self._nombre} {self._apellido}')
 
-#persona1.telefono = '5500992211'
-#print(persona1.telefono)
-# Persona.mostrar_detalle(persona1)
 
-persona2 = Persona('Karla', 'Gomez', 30)
-persona2.mostrar_detalle()
-
-# persona1.nombre = 'Jose Luis'
-# persona1.apellido = 'Martinez'
-# persona1.edad = 26
-# print(f'Objeto Persona 1: {persona1.nombre} {persona1.apellido} {persona1.edad}')
-
-# persona2.nombre = 'Karina'
-# persona2.apellido = 'Ramirez'
-# persona2.edad = 25
-# print(f'Objeto Persona 2: {persona2.nombre} {persona2.apellido} {persona2.edad}')
+if __name__ == '__main__':
+    persona1 = Persona('Jose', 'Perez', 28)
+    persona1.nombre = 'Jose Luis'
+    persona1.apellido = 'Lara'
+    persona1.edad = 30
+    persona1.mostrar_detalle()
+    print(__name__)
